@@ -7,13 +7,15 @@ const dotenv = require('dotenv')
 
 dotenv.config();
 
+maxAge = 60*60*24;
+
 
 const login = (req,res)=>{
     const {username,password,email} = req.body;
     try{
         var user = User.login(username, email, password);
         const token = userService.createLoginJwt(user._id);
-        res.cookie('jwt',token,{httpOnly: true, maxAge: 60*60*24*1000});
+        res.cookie('jwt',token,{httpOnly: true, maxAge: maxAge * 1000});
         res.send('succesfully loginned')
 
     }catch (err){

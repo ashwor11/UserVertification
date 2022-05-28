@@ -5,6 +5,9 @@ const dotenv = require('dotenv');
 const { default: mongoose } = require('mongoose');
 const userRoute = require('./routes/userRoute');
 const bodyParser = require('body-parser');
+const {checkUser} = require('./middlewares/authMiddleware')
+const cookieParser = require('cookie-parser')
+
 
 
 dotenv.config();
@@ -32,6 +35,9 @@ app.use(morgan('tiny'))
 app.use(express.static('public'))
 
 app.set('view engine', 'ejs');
+
+app.use(cookieParser())
+app.use('*',checkUser);
 
 app.use('/user',userRoute)
 

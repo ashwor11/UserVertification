@@ -31,7 +31,7 @@ const checkUser =(req,res,next)=>{
             if(err){
                 res.locals.user = null;
             }else{
-                let user =User.findOneById(decoded.id)
+                let user =await User.findById(decoded.id)
                 res.locals.user = user;
                 next();
             }
@@ -42,4 +42,9 @@ const checkUser =(req,res,next)=>{
    
     }
 
+}
+
+module.exports={
+    requireAuth,
+    checkUser
 }
