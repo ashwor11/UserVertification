@@ -27,5 +27,7 @@ JWT_LOGIN_SECRET=[A secret key for login jwt token] //can be anything
 
 After this settings done. You should let mail you will be using to less secure apps. If you do not give the permission app will crash.
 
+Than write this code to run app.
 ```
+node app.js
 ```
