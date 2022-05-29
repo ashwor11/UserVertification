@@ -22,7 +22,7 @@ module.exports = {
 async function create(userParam){
 
     //Checking for the username or email taken or not
-    if(User.findOne({$or:[{'email':req.body.email},{'username':req.body.username}]})){
+    if(await User.findOne({$or:[{'email':userParam.email},{'username':userParam.username}]})){
         throw 'Username or email already taken.'
     }
 
@@ -30,7 +30,7 @@ async function create(userParam){
 
 
     user.save()
-    .then((result)=>{sendMail(userParam.email, "Confirm your Photo Gallery account.", "You can verify your account by clicking this link:<a>" + emailVertificationJwt(user._id)) +"</a>"; return user})
+    .then((result)=>{sendMail(userParam.email, "Confirm your Photo Gallery account.", ("You can verify your account by clicking this link: <a href=\""+emailVertificationJwt(user._id)+"\"> Verify your account </a>")); return user})
     .catch((err)=>{throw err})
 
 }
@@ -81,7 +81,7 @@ function emailVertificationJwt(id){
 
     const token = jwt.sign({id:id}, process.env.JWT_MAIL_SECRET_KEY, {expiresIn: '1d'});
 
-    var url = process.env.BASE_URL + "user/verify?id=" + token;
+    var url = "http://"+process.env.BASE_URL + "user/verify?id=" + token;
 
     return url;
 }

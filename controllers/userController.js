@@ -36,7 +36,6 @@ const signUpPost = (req, res)=>{
 }
 
 const _delete = async (req, res)=>{
-    console.log(req.body.username)
     res.send(userService._delete(req.body.username))
     
 }
