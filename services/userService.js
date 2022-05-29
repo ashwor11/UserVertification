@@ -58,7 +58,7 @@ async function get(username){
 function sendMail(to,subject,html,text){
 
     let transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: process.env.EMAIL_SERVICE,
         auth: {
             user: process.env.EMAIL,
             pass: process.env.EMAIL_PASSWORD,

@@ -1,14 +1,15 @@
 {
-  "name": "photogallery",
+  "name": "UserVertification",
   "version": "1.0.0",
-  "description": "a gallery consist of collections of photos",
-  "main": "index.js",
+  "description": "An user vertification system",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/ashwor11/photogallery.git"
+    "url": "git+ssh://git@github.com:ashwor11/UserVertification.git"
   },
   "keywords": [
     "photo",
@@ -17,9 +18,9 @@
   "author": "ashwor11",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ashwor11/photogallery/issues"
+    "url": "https://github.com/ashwor11/UserVertification/issues"
   },
-  "homepage": "https://github.com/ashwor11/photogallery#readme",
+  "homepage": "https://github.com/ashwor11/UserVertification#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
@@ -30,7 +31,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.4",
     "morgan": "^1.10.0",
-    "nodemailer": "^6.7.5",
-    "passport-local": "^1.0.0"
+    "nodemailer": "^6.7.5"
   }
 }
