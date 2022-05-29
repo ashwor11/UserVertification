@@ -57,7 +57,12 @@ const verify = async (req,res)=>{
                     id = decoded.id;
                     console.log(id)
                 await User.findByIdAndUpdate(id,{isVerified:true})
-                .then((result)=>{res.status(200).send('User verified succesfully.')})
+                .then((result)=>{
+                    if(result){
+                        res.status(200).send('User verified succesfully.')
+                    }else{
+                        res.status(400).send('There is no user for this token')
+                    }})
                 .catch((err)=>{res.status(500).send(err.message)})
                 }
 
